@@ -1,0 +1,13 @@
+# 环境配置
+# 所有与运行环境相关的参数集中在此文件中，代码中不应硬编码连接信息。
+database:
+  driver: postgresql
+  host: localhost
+  port: 5432
+  name: surveillance
+  user: surveillance
+  password: changeme
+  pool_size: 10
+logging:
+  level: INFO
+  file: ./logs/app.log

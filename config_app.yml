@@ -1,0 +1,26 @@
+# 应用层配置（检测、跟踪、人脸相关参数）
+yolo:
+  model_path: ./models/yolov8n.pt
+  confidence: 0.5
+  nms: 0.45
+  input_size: [640, 640]
+  device: cpu
+  batch_size: 1
+byte_track:
+  track_buffer: 30
+  match_threshold: 0.8
+  min_box_area: 10
+  mot20: false
+  reid_threshold: 0.6
+insightface:
+  model_path: ./models/insightface.onnx
+  input_size: [112, 112]
+  detection_confidence: 0.6
+  similarity_threshold: 0.4
+  device: cpu
+business:
+  resident_similarity: 0.6
+  visitor_similarity: 0.6
+  passerby_similarity: 0.65
+  alarm_on_over_capacity: true
+  capture_on_alarm: true
