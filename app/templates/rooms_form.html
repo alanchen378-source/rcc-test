@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ '编辑房间' if room else '新建房间' }}</h2>
+<form method="post" action="{{ '/admin/rooms/' + room.id if room else '/admin/rooms' }}" class="form">
+    <label>
+        房间名称
+        <input type="text" name="name" value="{{ room.name if room else '' }}" required>
+    </label>
+    <label>
+        额定人数
+        <input type="number" name="capacity" min="0" value="{{ room.capacity if room else 0 }}" required>
+    </label>
+    <label>
+        初始人数 / 当前基数
+        <input type="number" name="initial_count" min="0" value="{{ room.initial_count if room else 0 }}">
+    </label>
+    <label>
+        夜宿时段（例：22:00-06:00）
+        <input type="text" name="night_period" value="{{ room.night_period if room else '' }}">
+    </label>
+    <label>
+        备注
+        <textarea name="remark" rows="3">{{ room.remark if room else '' }}</textarea>
+    </label>
+    <div class="form-actions">
+        <button type="submit" class="btn primary">保存</button>
+        <a class="btn secondary" href="/admin/rooms">返回列表</a>
+    </div>
+</form>
+{% endblock %}

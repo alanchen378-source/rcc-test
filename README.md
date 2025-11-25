@@ -26,9 +26,10 @@
    ```bash
    ./run.sh
    ```
-3. 访问接口：
+3. 访问接口与管理界面：
    - 根路径健康检查：`GET /`
    - 房间 CRUD：`/rooms`
    - 人员 CRUD：`/people`
+   - Web 管理后台：`GET /admin`（内置房间、人员的表单式管理界面）
 
 默认数据库地址来自 `config_env.yml`，请按需修改为实际的 PostgreSQL 连接信息。

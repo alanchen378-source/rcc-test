@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ '编辑人员' if person else '新增人员' }}</h2>
+<form method="post" action="{{ '/admin/people/' + person.id if person else '/admin/people' }}" class="form">
+    <label>
+        姓名
+        <input type="text" name="name" value="{{ person.name if person else '' }}" required>
+    </label>
+    <label>
+        备注
+        <textarea name="remark" rows="3">{{ person.remark if person else '' }}</textarea>
+    </label>
+    <div class="form-actions">
+        <button type="submit" class="btn primary">保存</button>
+        <a class="btn secondary" href="/admin/people">返回列表</a>
+    </div>
+</form>
+{% endblock %}
