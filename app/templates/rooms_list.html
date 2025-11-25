@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-header">
+    <div>
+        <h2>房间列表</h2>
+        <p>查看、编辑或新增房间，并维护额定人数与初始人数。</p>
+    </div>
+    <a class="btn" href="/admin/rooms/new">新建房间</a>
+</section>
+<table>
+    <thead>
+        <tr>
+            <th>名称</th>
+            <th>额定人数</th>
+            <th>当前基数</th>
+            <th>夜宿时段</th>
+            <th>备注</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.name }}</td>
+            <td>{{ room.capacity }}</td>
+            <td>{{ room.initial_count or 0 }}</td>
+            <td>{{ room.night_period or '-' }}</td>
+            <td>{{ room.remark or '' }}</td>
+            <td class="actions">
+                <a class="btn secondary" href="/admin/rooms/{{ room.id }}/edit">编辑</a>
+                <form method="post" action="/admin/rooms/{{ room.id }}/delete" onsubmit="return confirm('确定删除该房间？');">
+                    <button type="submit" class="btn danger">删除</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6" class="empty">暂无房间，请先新建。</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
